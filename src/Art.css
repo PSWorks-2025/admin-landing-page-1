@@ -1,0 +1,84 @@
+.arts-grid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5%;
+  display: grid;
+  gap: 8.5px;
+  grid-template-columns: 95%;
+  grid-auto-rows: 44vw;
+}
+
+.arts-grid .grid-item {
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.arts-grid .grid-item > .tag {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  margin-top: auto;
+  margin-bottom: -50%;
+  width: 100%;
+  opacity: 0;
+  transition:
+    margin-bottom 0.6s ease,
+    opacity 0.8s ease;
+  z-index: 1;
+}
+
+.arts-grid .grid-item > .tag > .title {
+  margin: 5% 0 5% 5%;
+  font-size: 150%;
+  width: 70%;
+  word-wrap: break-word;
+}
+
+.arts-grid .grid-item:hover > .tag {
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+@media screen and (min-width: 640px) {
+  .arts-grid {
+    padding-left: 2.5%;
+    grid-template-columns: 48% 48%;
+    grid-auto-rows: 20vw;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .arts-grid {
+    padding-left: 1%;
+    gap: 10px;
+    grid-template-columns: 24% 24% 24% 24%;
+    grid-auto-rows: 11vw;
+  }
+}
+
+.arts-container {
+  position: relative;
+}
+
+.art-edit-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.art-edit-form {
+  margin: auto;
+  background-color: white;
+  width: 50vw;
+  border-radius: 10px;
+  padding: 20px;
+}
