@@ -2,7 +2,11 @@ const BioData = ({ Bio, onDelete }) => {
   return (
     <div className="container mx-auto p-4">
       <div className="h-[80vh] overflow-y-auto border border-gray-300 rounded-lg p-4">
-        {Object.entries(Bio).map(([sectionKey, section]) => (
+        {Object.entries(Bio)
+        .map(([key, value]) => [key.slice(8), value])
+        .sort((a, b) => a[0] - b[0])
+        .map(([key, value]) => ["section_" + key, value])
+        .map(([sectionKey, section]) => (
           <div
             key={sectionKey}
             className="w-full mb-8 border p-4 rounded-lg shadow-md"
@@ -18,7 +22,11 @@ const BioData = ({ Bio, onDelete }) => {
               </button>
             </div>
             <div className="flex flex-row gap-4">
-              {Object.entries(section.parts).map(([partKey, part]) => (
+              {Object.entries(section.parts)
+              .map(([key, value]) => [key.slice(5), value])
+              .sort((a, b) => a[0] - b[0])
+              .map(([key, value]) => ["part_" + key, value])
+              .map(([partKey, part]) => (
                 <div key={partKey} className="flex-1 p-2">
                   <p className="text-sm font-semibold mb-2">{partKey}</p>
                   {part.type === "image" ? (
