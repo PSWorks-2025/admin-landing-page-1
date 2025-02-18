@@ -9,6 +9,7 @@ function Input({ onSubmit }) {
     row: "",
     column: "",
     imageUrl: "",
+    description:""
   });
 
   const handleFileChange = (event) => {
@@ -39,6 +40,7 @@ function Input({ onSubmit }) {
         column: "",
         row: "",
         imageUrl: "",
+        description:""
       });
       setImagePreview(null);
     } else {
@@ -98,7 +100,16 @@ function Input({ onSubmit }) {
               name="row"
               value={imageData.row}
               onChange={handleInputChange}
-              placeholder="Heght"
+              placeholder="Height"
+            />
+
+            <input
+              type="text"
+              className="w-1/2 h-auto"
+              name="description"
+              value={imageData.description}
+              onChange={handleInputChange}
+              placeholder="Description"
             />
             <button
               type="submit"

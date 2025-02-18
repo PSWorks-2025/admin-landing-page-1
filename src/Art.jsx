@@ -42,17 +42,25 @@ export function EditArtScreen({ isHidden, onDone, onCancel }) {
         <br />
         <input
           type="text"
+          name="description"
+          id="art-description-edit"
+          placeholder="Description"
+        />
+        <br />
+        <input
+          type="text"
           name="imageUrl"
           id="art-image-url-edit"
           placeholder="Image URL"
         />
         <span> or </span>
         <input type="file" id="art-file-edit" accept="image/*" />
+        <br></br>
         <input
-          type="text"
-          name="redirectUrl"
-          id="art-redirect-url-edit"
-          placeholder="Redirect URL"
+          type="date"
+          name="date"
+          id="art-date-edit"
+          placeholder="Date"
         />
         <br />
         <div className="flex flex-row">

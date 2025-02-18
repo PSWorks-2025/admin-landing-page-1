@@ -90,7 +90,8 @@ function App() {
     const title = document.getElementById('art-title-edit').value;
     const imageInput = document.getElementById('art-image-url-edit');
     const imageFile = document.getElementById('art-file-edit');
-    const redirectUrl = document.getElementById('art-redirect-url-edit').value;
+    const date = document.getElementById('art-date-edit').value;
+    const description = document.getElementById('art-description-edit').value;
 
     let imageUrl = imageInput.value;
 
@@ -103,7 +104,8 @@ function App() {
           {
             title: title,
             imageUrl: base64Image,
-            url: redirectUrl,
+            date: date,
+            description:description,
             id: prevArts.length + 1,
           },
           ...prevArts,
@@ -116,7 +118,8 @@ function App() {
         {
           title: title,
           imageUrl: imageUrl,
-          url: redirectUrl,
+          date: date,
+          description:description,
           id: prevArts.length + 1,
         },
         ...prevArts,
@@ -215,7 +218,7 @@ function App() {
           setArts(res2);
         } else if (doc.id === 'news' && data && data.data) {
           setNews(data.data);
-        } else {
+        } else if (doc.id === 'bio' && data && data.data){
           console.log(data.data);
           setBio(data.data);
         }
@@ -274,14 +277,14 @@ function App() {
     });
   };
 
-  const addEvent = ({ year, title, day, month }) => {
+  const addEvent = ({ year, title, day, month,image, description }) => {
     setNews((prevEvents) => {
       const newEvents = { ...prevEvents };
       if (!newEvents[year]) {
         newEvents[year] = {};
       }
       const eventId = `event_${Object.keys(newEvents[year]).length}`;
-      newEvents[year][eventId] = { title, day, month, url: '/' };
+      newEvents[year][eventId] = { title, day, month, imageUrl: image,description,date:`${day}-${month}-${year}` };
       return newEvents;
     });
   };
@@ -319,6 +322,8 @@ function App() {
     setBio(newSections);
   };
   const addSection = (height, overlay, newSectionData) => {
+    console.log(newSectionData);
+    
     const sectionCount = Object.keys(bio).length;
     const newSectionKey = `section_${sectionCount}`;
 
@@ -348,6 +353,9 @@ function App() {
       ...prevBio,
       [newSectionKey]: newSection,
     }));
+
+    console.log(newSection);
+    
   };
 
   return (
